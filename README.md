@@ -55,3 +55,24 @@ is `local_openvino`.
 
 
 ![Running in Zed](zed.png)
+
+# (Not so) frequently asked questions
+
+## Why the name Carmenere-LLM?
+
+This project is heavily based in OpenVINO. The word "vino" means wine in spanish, I'm
+chilean, and Carmenere is a wine type/grape which grows and is manufactured almost only
+in Chile 🇨🇱.
+
+## Can I use models that are not optimized for OpenVINO with this application?
+
+Yes, but you will need to convert them to OpenVINO INT4. To do this, you will need
+to use the optimum-cli tool. Here's an example for downloading an LLM model created
+specifically for pentesting purposes:
+
+```shell
+optimum-cli export openvino --model L33tcode/llama-3-8b-CEH-hf --task text-generation-with-past --weight-format int4 --trust-rem
+ote-code --group-size 128 --ratio 1.0 models/llama3_ceh_8b_ov
+```
+
+Keep in mind that this doesn't work with GGUF models.
