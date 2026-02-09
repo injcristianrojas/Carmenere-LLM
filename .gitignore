@@ -1,0 +1,16 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Project files/directories
+model_cache/*cache
+model_cache/*.blob
+models/
+.prompt_history
