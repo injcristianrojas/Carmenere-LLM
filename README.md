@@ -38,9 +38,7 @@ uv run chat.py [model_path]
 
 Where `model_path` is the downloaded model's path. Defaults to models/qwen_coder_3b_ov.
 
-<video src="chat.mkv" controls></video>
-
-![Running in Zed](chat.png)
+![Chatbot running in terminal](chat.gif)
 
 ## Local server
 
