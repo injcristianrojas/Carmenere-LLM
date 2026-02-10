@@ -1,15 +1,30 @@
 import argparse
+import sys
+
 from prompt_toolkit import prompt
 from prompt_toolkit.history import FileHistory
-from helpers.functions import get_model_and_configs, DEFAULT_MODEL_PATH
+
+from helpers.functions import (
+    DEFAULT_MODEL_PATH,
+    get_available_models,
+    get_model_and_configs,
+)
 
 PROMPT_HISTORY_FILE = ".prompt_history"
 
-parser = argparse.ArgumentParser(description="Test")
+parser = argparse.ArgumentParser(description="Local LLM chat")
 parser.add_argument(
     "model_path", nargs="?", default=DEFAULT_MODEL_PATH, help="The model path"
 )
+parser.add_argument(
+    "-m", "--models", action="store_true", help="List available models and exit"
+)
 args = parser.parse_args()
+if args.models:
+    print("Available models:")
+    for model in get_available_models():
+        print(model)
+    sys.exit(0)
 model_path = args.model_path
 
 

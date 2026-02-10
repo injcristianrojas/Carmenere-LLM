@@ -1,7 +1,8 @@
+import os
 import openvino_genai as ov_genai
 
-DEFAULT_MODEL_PATH = "models/qwen_coder_3b_ov"
-
+MODELS_PATH = "models"
+DEFAULT_MODEL_PATH = f"{MODELS_PATH}/qwen_coder_3b_ov"
 
 def get_model_and_configs(model_path):
     device = "GPU"
@@ -16,3 +17,8 @@ def get_model_and_configs(model_path):
     config.top_p = 0.9
     print("Ready (Iris Xe Optimized)\n")
     return pipe, config
+
+def get_available_models():
+    entries = os.listdir(MODELS_PATH)
+    subfolders = [entry for entry in entries if os.path.isdir(os.path.join(MODELS_PATH, entry))]
+    return subfolders
