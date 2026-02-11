@@ -71,8 +71,7 @@ to use the optimum-cli tool. Here's an example for downloading an LLM model crea
 specifically for pentesting purposes:
 
 ```shell
-optimum-cli export openvino --model L33tcode/llama-3-8b-CEH-hf --task text-generation-with-past --weight-format int4 --trust-rem
-ote-code --group-size 128 --ratio 1.0 models/llama3_ceh_8b_ov
+optimum-cli export openvino --model L33tcode/llama-3-8b-CEH-hf --task text-generation-with-past --weight-format int4 --trust-remote-code --group-size 128 --ratio 1.0 models/llama3_ceh_8b_ov
 ```
 
 Keep in mind that this doesn't work with GGUF models.
