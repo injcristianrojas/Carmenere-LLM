@@ -56,6 +56,20 @@ is `local_openvino`.
 
 ![Running in Zed](zed.png)
 
+## Image generator (BETA)
+
+Download a image generator model, like:
+
+```shell
+hf download OpenVINO/FLUX.1-schnell-int4-ov --local-dir models/flux_schnell_ov
+```
+
+Then launch:
+
+```shell
+uv run image_generator.py "<description>" <file_to_export_to>
+```
+
 # (Not so) frequently asked questions
 
 ## Why the name Carmenere-LLM?
