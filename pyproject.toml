@@ -9,6 +9,7 @@ dependencies = [
     "huggingface-hub>=1.4.1",
     "openvino-genai>=2025.4.1.0",
     "optimum[nncf,openvino]>=1.17.1",
+    "pillow>=12.1.0",
     "prompt-toolkit>=3.0.52",
     "uvicorn>=0.40.0",
 ]
