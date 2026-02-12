@@ -7,7 +7,7 @@ import argparse
 import openvino_genai as ov_genai
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from helpers.functions import get_model_and_configs, DEFAULT_MODEL_PATH
 
 parser = argparse.ArgumentParser()
@@ -23,12 +23,10 @@ app = FastAPI()
 
 
 class ChatRequest(BaseModel):
+    model_config = ConfigDict(extra="allow")
     model: str
     messages: list
     stream: bool = False
-
-    class Config:
-        extra = "allow"
 
 
 def extract_text(content):
