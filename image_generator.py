@@ -7,6 +7,7 @@ parser.add_argument("prompt", nargs="?", help="Description of the image")
 parser.add_argument("file", nargs="?", help="File to write the image to")
 args = parser.parse_args()
 prompt = args.prompt
+file = args.file
 
 
 def main():
@@ -16,7 +17,7 @@ def main():
         prompt, width=512, height=512, guidance_scale=0.0, num_inference_steps=4
     )
     image = Image.fromarray(image_tensor.data[0])
-    image.save("cat.png")
+    image.save(file)
 
 
 if __name__ == "__main__":
