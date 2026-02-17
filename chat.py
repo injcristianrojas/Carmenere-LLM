@@ -1,5 +1,6 @@
-import argparse
 import sys
+import argparse
+import subprocess
 
 from prompt_toolkit import prompt
 from prompt_toolkit.history import FileHistory
@@ -19,12 +20,26 @@ parser.add_argument(
 parser.add_argument(
     "-m", "--models", action="store_true", help="List available models and exit"
 )
+parser.add_argument(
+    "-c", "--clear-model-cache", action="store_true", help="Clear model cache"
+)
 args = parser.parse_args()
 if args.models:
     print("Available models:")
     for model in get_available_models():
         print(model)
     sys.exit(0)
+if args.clear_model_cache:
+    print("Model cache cleanup... ", end="")
+    result = subprocess.run(
+        ["rm", "-f", "model_cache/*"], capture_output=True, text=True, check=True
+    )
+    returncode = result.returncode
+    if returncode == 0:
+        print("done.")
+    else:
+        print(f"Error: {returncode}")
+    sys.exit(result.returncode)
 model_path = args.model_path
 
 
